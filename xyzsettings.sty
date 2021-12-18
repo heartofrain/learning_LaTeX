@@ -1,0 +1,105 @@
+\ProvidesPackage{xyzsettings} % 本宏包名，必须与文件名一致
+
+% 调整页面大小
+\RequirePackage{geometry}
+\geometry{a4paper,margin=2cm}
+
+% 定义蓝色：
+\RequirePackage{xcolor}
+\definecolor{xyzcolor}{RGB}{1,126,218}
+
+% 标题左对齐、大小及颜色：
+\RequirePackage{titlesec}
+\titleformat*{\section}{\normalfont\Large\bfseries\color{xyzcolor}}
+\titleformat*{\subsection}{\normalfont\large\bfseries\color{xyzcolor}}
+\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries\color{xyzcolor}}
+
+% 设置列表环境行间距：
+\RequirePackage{enumitem}
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt}
+\setenumerate[2]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt}
+\setitemize[2]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt}
+
+% 浮动体支持 H 参数
+\RequirePackage{float}
+
+% Times 字体宏包
+% \RequirePackage{txfonts} 
+% 《LaTeX入门》中推荐使用该字体，实测发现有问题
+% 已用 newtxtext 宏包和 newtxmath 宏包代替
+\RequirePackage{newtxtext} % 正文 Times 字体
+\RequirePackage{newtxmath} % 数学 TImes 字体
+
+% 设置数学字体（已用 newtxtext 宏包和 newtxmath 宏包代替）
+% \RequirePackage{unicode-math}
+% \setmathfont{STIX Math}
+
+% 设置字体
+\RequirePackage{fontspec}
+% \setmainfont[ItalicFont=timesi.ttf,BoldFont=timesbd.ttf]{times.ttf} 
+% Times 字体方案（已用 newtxtext 宏包和 newtxmath 宏包代替）
+% \setCJKmainfont[BoldFont=simhei.ttf,ItalicFont=simkai.ttf]{simsun.ttc}
+% 中易中文字体方案（有版权问题）
+% \setCJKmainfont[BoldFont=SourceHanSansCN-Regular.otf,ItalicFont=SourceHanSansCN-Regular.otf]{SourceHanSerifCN-Regular-1.otf}
+% 思源中文字体方案
+\setCJKmainfont[BoldFont=FZHTJ.OTF,ItalicFont=FZKTJ.OTF]{FZSSJ.OTF}
+% 方正免费中文字体方案
+\setCJKfamilyfont{FZKTJ}{FZKTJ.OTF}
+\newcommand*{\mykaiti}{\CJKfamily{FZKTJ}}
+\setCJKfamilyfont{FZHTJ}{FZHTJ.OTF}
+\newcommand*{\myheiti}{\CJKfamily{FZHTJ}}
+
+% 创建定理类环境
+% \RequirePackage{theorem}
+\RequirePackage{ntheorem} % 无编号定理格式的宏包
+\theoremstyle{nonumberplain} % 无编号定理，与ntheorem宏包对应
+\newtheorem{caution}{注意  }[section]
+\newtheorem{_warning}{\color{red} 警告  }[section]
+\newtheorem{_risk}{\color{red} 风险点  }[section]
+\newtheorem{Q}{问题 }
+\newtheorem{A}{参考 }
+\newenvironment{risk}{
+	\begin{_risk}
+    \color{red}
+}%开始部分定义
+{\end{_risk}}%结束部分定义
+\newenvironment{warning}{
+	\begin{_warning}
+    \color{red}
+}%开始部分定义
+{\end{_warning}}%结束部分定义
+
+% 删除线宏包：
+\RequirePackage[normalem]{ulem}
+
+% 设定页眉页脚样式：无页眉，页脚为页码
+\pagestyle{plain}
+
+% 多栏环境包
+\RequirePackage{multicol}
+
+% 表格画线包
+\RequirePackage{booktabs}
+
+% 插图包
+\RequirePackage{graphicx}
+
+% 并行两栏包
+\RequirePackage{parallel}
+% 另一种宏包是paracol
+
+% 图片标题包
+\RequirePackage{caption}
+\captionsetup[figure]{name=图}
+\captionsetup[table]{name=表}
+
+% 为公式环境提供 \text{} 功能
+\RequirePackage{amsmath}
+
+% 提供导入已有pdf文件的功能
+\RequirePackage{pdfpages}
+
+% 设置过时标记
+\newcommand{\OutDateMark}{\emph{\large \color{red} 本文档已过时，请注意甄别文中信息。}}
